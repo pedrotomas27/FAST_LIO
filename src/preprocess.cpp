@@ -114,15 +114,15 @@ void Preprocess::v_m1600_handler(const sensor_msgs::PointCloud2::ConstPtr &msg)
         added_pt.normal_y = 0;
         added_pt.normal_z = 0;
         added_pt.x = pl_orig.points[i].x;
-        added_pt.y = pl_orig.points[i].y*-1;
-        added_pt.z = pl_orig.points[i].z*-1;
+        added_pt.y = pl_orig.points[i].y;
+        added_pt.z = pl_orig.points[i].z;
         added_pt.intensity = pl_orig.points[i].intensity;
 
         double current_sec = pl_orig.points[i].timestampSec;
         double current_nsec = pl_orig.points[i].timestampNsec;
         double current_time = current_sec + current_nsec * 1e-9;
 
-        added_pt.curvature = (current_time - time_head) * 1000.0; // Curvature unit: ms
+        added_pt.curvature = (current_time - time_head) * 1e3; // Curvature unit: ms
 
         if (i % point_filter_num == 0)
         {

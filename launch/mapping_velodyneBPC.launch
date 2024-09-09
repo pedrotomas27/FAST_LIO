@@ -1,9 +1,9 @@
 <launch>
   <!-- Launch file for velodyne16 VLP-16 LiDAR -->
-
+    <node pkg="python_executables" type="convBP_VLP.py" name="convM1600_VLP" output="screen" />
     <arg name="rviz" default="true" />
 
-    <rosparam command="load" file="$(find fast_lio)/config/velodyneM1600C.yaml" />
+    <rosparam command="load" file="$(find fast_lio)/config/RSBPearl.yaml" />
 
     <param name="feature_extract_enable" type="bool" value="0"/>
     <param name="point_filter_num" type="int" value="4"/>
